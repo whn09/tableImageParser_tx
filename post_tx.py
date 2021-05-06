@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
     img_names = os.listdir(img_root)
     for img_name in img_names:
-        if img_name.endswith('.jpg'):
+        if img_name.endswith('.jpg') or img_name.endswith('.png'):
             print(img_name)
             col_path = os.path.join(col_root, img_name)
             ncol_path = os.path.join(ncol_root, img_name)
