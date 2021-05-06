@@ -20,7 +20,7 @@ class Detector(object):
         self.input_images = tf.placeholder(tf.float32, shape=[None, None, None, 3], name='input_images')
         self.session = tf.Session(config=config)
         self.global_step = tf.get_variable('global_step', [], initializer=tf.constant_initializer(0), trainable=False)
-        self.score_nrow, self.score_ncol, self.score_row, self.score_col = model_tx.model(self.input_images, is_training=False)
+        self.score_nrow, self.score_ncol, self.score_row, self.score_col = model.model(self.input_images, is_training=False)
         self.variable_averages = tf.train.ExponentialMovingAverage(0.997, self.global_step)
         self.saver = tf.train.Saver(self.variable_averages.variables_to_restore())
         self.ckpt_state = tf.train.get_checkpoint_state(model_dir)

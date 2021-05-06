@@ -3,6 +3,8 @@
 ### 本项目通过腾讯分享文章，复现了腾讯表格结果解析文章地址为https://zhuanlan.zhihu.com/p/69793742   (Table Structure Recognition from Tencent)
 
 ## 环境(Requirements)
+```sudo yum install -y geos-devel freetype-devel libpng-devel```
+
 ```pip install -r requirements.txt```
 
 ## 例子🌰(Demo)
