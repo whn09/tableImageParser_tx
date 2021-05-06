@@ -29,8 +29,9 @@ def line_row_gen(img_path):
     # points = [(box[0], box[1]), (box[2],box[1]), (box[2], box[3]), (box[0], box[3])]
     # cv2.fillPoly(image,[np.array(points)],(255,0,0))
     # cv2.imwrite( 'E:/image/myhoughlinesp.jpg',img )
-    cv2.imshow( '1',img )
-    cv2.waitKey(0)
+#     cv2.imshow( '1',img )
+#     cv2.waitKey(0)
+    cv2.imwrite(img_path.replace('.jpg', '_post.jpg'), img)
     return img_temp, 1
 
 def angle(v1, v2):
@@ -79,8 +80,9 @@ def line_col_gen(img_path):
     # points = [(box[0], box[1]), (box[2],box[1]), (box[2], box[3]), (box[0], box[3])]
     # cv2.fillPoly(image,[np.array(points)],(255,0,0))
     # cv2.imwrite( 'E:/image/myhoughlinesp.jpg',img )
-    cv2.imshow( '2',img )
-    cv2.waitKey(0)
+#     cv2.imshow( '2',img )
+#     cv2.waitKey(0)
+    cv2.imwrite(img_path.replace('.jpg', '_post.jpg'), img)
     return img_temp, 1
 
 def tx_post(row_path, nrow_path, col_path, ncol_path):
@@ -91,18 +93,25 @@ def tx_post(row_path, nrow_path, col_path, ncol_path):
 
 
 if __name__ == '__main__':
-    img_root = r'\result\test'
-    col_root = r'\result\col'
-    row_root = r'\result\row'
-    ncol_root = r'\result\ncol'
-    nrow_root = r'\result\nrow'
+#     img_root = r'\result\test'
+#     col_root = r'\result\col'
+#     row_root = r'\result\row'
+#     ncol_root = r'\result\ncol'
+#     nrow_root = r'\result\nrow'
+    img_root = 'result'
+    col_root = 'tx_infer_data/col'
+    row_root = 'tx_infer_data/row'
+    ncol_root = 'tx_infer_data/ncol'
+    nrow_root = 'tx_infer_data/nrow'
 
 
-    img_names = os.listdir(col_root)
+    img_names = os.listdir(img_root)
     for img_name in img_names:
-        col_path = os.path.join(col_root, img_name)
-        ncol_path = os.path.join(ncol_root, img_name)
-        row_path = os.path.join(row_root, img_name)
-        nrow_path = os.path.join(nrow_root, img_name)
-        # save_path = os.path.join(save_root, img_name)
-        tx_post(row_path, nrow_path, col_path, ncol_path)
+        if img_name.endswith('.jpg'):
+            print(img_name)
+            col_path = os.path.join(col_root, img_name)
+            ncol_path = os.path.join(ncol_root, img_name)
+            row_path = os.path.join(row_root, img_name)
+            nrow_path = os.path.join(nrow_root, img_name)
+            # save_path = os.path.join(save_root, img_name)
+            tx_post(row_path, nrow_path, col_path, ncol_path)
